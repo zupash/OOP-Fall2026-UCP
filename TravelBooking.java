@@ -47,7 +47,7 @@ class Main { //utility
         booking2.setdata(1234,"LHR","ISL","18B",true);
         booking2.viewBooking();
         TravelBooking booking3=new TravelBooking();
-        booking1.viewBooking();
+        booking3.viewBooking();
         booking3.setdata(1234,"LHR","ISL","19A",true);
         booking3.viewBooking();
     }
