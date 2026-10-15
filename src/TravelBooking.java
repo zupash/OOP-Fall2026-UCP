@@ -1,4 +1,5 @@
 class TravelBooking{
+    static String Airlinename="PIA";
     private int bookingref;
     private  String source;
     private String destination;
@@ -11,6 +12,7 @@ class TravelBooking{
         seatno="18A";
         status=true;
     }*/
+
     void setdata(int br,String s,String d,String seat,boolean st){ //mutator/setter
         bookingref=br;
         source=s;
@@ -31,6 +33,7 @@ class TravelBooking{
 class Main { //utility
     public static void main(String[] args) {
         TravelBooking booking1=new TravelBooking();
+        System.out.println(TravelBooking.Airlinename);
         booking1.viewBooking();
         //booking1.setdata();
         booking1.setdata(1234,"LHR","ISL","18A",true);
