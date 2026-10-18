@@ -1,57 +1,71 @@
-class TravelBooking{
-    static String Airlinename="PIA";
-    private int bookingref;
-    private  String source;
-    private String destination;
-    private String seatno;
-    private boolean status;
-    /*void setdata(){ //mutator/setter
-        bookingref=1245;
-        source="LHR";
-        destination="ISL";
-        seatno="18A";
-        status=true;
-    }*/
 
-    void setdata(int br,String s,String d,String seat,boolean st){ //mutator/setter
-        bookingref=br;
-        source=s;
-        destination=d;
-        seatno=seat;
-        status=st;
+public class TravelBooking {
+    static String Airlinename="PIA";
+    private int bookingReference;
+    String source;
+    String destination;
+    private String travelDate;
+    private String seatNumber;
+    private boolean status;
+
+    public TravelBooking() {
+        bookingReference = 0;
+        source = "Not Assigned";
+        destination = "Not Assigned";
+        travelDate = "Not Assigned";
+        seatNumber = "Not Assigned";
+        status = true;
     }
-    void changeSeat(String sn){
-        seatno=sn;
+
+    public TravelBooking(int ref, String source, String destination, String date, String seat) {
+        bookingReference = ref;
+        this.source = source;
+        this.destination=destination;
+        travelDate = date;
+        seatNumber = seat;
+        status = true;
     }
-    void viewBooking() //accessor/getter
-    {
-        System.out.println(bookingref+" "+source+" "+
-                destination+ " "+ seatno+ " "+
-                status);
+
+    public void setBookingReference(int ref) {   bookingReference = ref; }
+    public void setSource(String source) { this.source = source;    }
+    public void setDestination(String destination) { this.destination = destination;    }
+    public void setTravelDate(String date) {    travelDate = date;       }
+    public void setSeatNumber(String seat) {        changeSeat(seat);    }
+
+    public int getBookingReference() {  return bookingReference;    }
+    public String getSource() {    return this.source;    }
+    public String getDestination(){    return  destination; }
+    public String getTravelDate() {  return travelDate;    }
+    public String getSeatNumber() {   return seatNumber;    }
+    public boolean getStatus() {    return status;    }
+
+
+    public void changeSeat(String newSeat) {
+        if (!status) {
+            System.out.println("Seat cannot be changed after check-in.");
+        } else if (newSeat == null) {
+            System.out.println("Invalid seat number.");
+        } else {
+            seatNumber = newSeat;
+            System.out.println("Seat changed to " + newSeat);
+        }
     }
-}
-class Main { //utility
-    public static void main(String[] args) {
-        TravelBooking booking1=new TravelBooking();
-        System.out.println(TravelBooking.Airlinename);
-        booking1.viewBooking();
-        //booking1.setdata();
-        booking1.setdata(1234,"LHR","ISL","18A",true);
-        //booking1.bookingref=1234;
-        //booking1.seatno="18A";
-        booking1.viewBooking();
-        //System.out.println(booking1.bookingref+" "+booking1.source+" "+
-        //     booking1.destination+ " "+ booking1.seatno+ " "+
-        //   booking1.status);
-        booking1.changeSeat("20A");
-        booking1.viewBooking();
-        TravelBooking booking2=new TravelBooking();
-        booking1.viewBooking();
-        booking2.setdata(1234,"LHR","ISL","18B",true);
-        booking2.viewBooking();
-        TravelBooking booking3=new TravelBooking();
-        booking3.viewBooking();
-        booking3.setdata(1234,"LHR","ISL","19A",true);
-        booking3.viewBooking();
+
+    public void checkIn() {
+        if (status) {
+            status = true;
+            System.out.println("Check-in successful.");
+        } else {
+            System.out.println("Already checked in.");
+        }
+    }
+
+    void displayBooking() {
+        System.out.println("Booking Reference: " + bookingReference);
+        System.out.println("Source: " + source);
+        System.out.println("Destination: "+ destination);
+        System.out.println("Travel Date: " + travelDate);
+        System.out.println("Seat Number: " + seatNumber);
+        System.out.println("Status: " + status);
     }
 }
